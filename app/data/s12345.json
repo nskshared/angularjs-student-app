@@ -1,0 +1,10 @@
+{
+    "studentId": "s12345",
+    "name": "Sam",
+    "role": "Developer",
+    "address": {
+        "city": "San Fransico",
+        "state": "California",
+        "country": "USA"
+    }
+}

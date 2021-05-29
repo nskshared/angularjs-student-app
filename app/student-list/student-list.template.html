@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <!--Sidebar content-->
+  
+        <p>
+          Search:
+          <input placeholder="Enter studentId. Ex: s1234" ng-model="$ctrl.query" />
+        </p>
+  
+        <!-- <p>
+          Sort by:
+          <select ng-model="$ctrl.orderProp">
+            <option value="name">Alphabetical</option>
+            <option value="age">Newest</option>
+          </select>
+        </p> -->
+  
+      </div>
+      <div class="col-md-10">
+        <!--Body content-->
+  
+        <ul class="students">
+          <li ng-repeat="student in $ctrl.students | filter:$ctrl.query"
+              class="thumbnail student-list-item">
+            <!-- <a href="#!/students/{{student.id}}" class="thumb">
+              <img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}" />
+            </a> -->
+            <a href="#!/students/{{student.studentId}}">{{student.name}}</a>
+          </li>
+        </ul>
+  
+      </div>
+    </div>
+  </div>
+  

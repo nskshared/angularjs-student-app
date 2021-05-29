@@ -1,0 +1,10 @@
+{
+    "studentId": "s1234",
+    "name": "Sowmya",
+    "role": "TechLead",
+    "address": {
+        "city": "Irving",
+        "state": "Texas",
+        "country": "USA"
+    }
+}
