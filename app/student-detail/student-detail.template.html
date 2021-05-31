@@ -1,10 +1,57 @@
-
 <h1>{{$ctrl.student.name}}</h1>
 <div>
-<b>Role</b>: {{$ctrl.student.role}}
+    <b>Role</b>: {{$ctrl.student.role}}
 </div>
 <div>
-<b>Lives in</b>: {{$ctrl.student.address.city}}
+    <b>Lives in</b>: {{$ctrl.student.address.city}}
+</div>
+<div>
+    <form name="myForm" class="css-form" novalidate>
+        <h2>
+            Update details
+            <hr>
+        </h2>
+        <div>
+            <label>NickName:
+                <input type="text" ng-model="student.nickname" name="nickname" required="" />
+            </label>
+            <div ng-show="myForm.$submitted || myForm.nickname.$touched">
+                <div style="color: red" ng-show="myForm.nickname.$error.required">Tell us your nick-name.</div>
+            </div>
+        </div>
+        <div>
+            <label>E-mail:
+                <input type="email" ng-model="student.email" name="stuEmail" required="" />
+            </label>
+            <br />
+            <div style="color: red" ng-show="myForm.$submitted && myForm.stuEmail.$touched">
+                <span ng-show="myForm.stuEmail.$error.required">Tell us your email.</span>
+                <span ng-show="myForm.stuEmail.$error.email">This is not a valid email.</span>
+            </div>
+        </div>
+        <h3>Interested In</h3>
+        <div>
+            Game [OnBlur]: <input name="interest" type="text" ng-model="student.interest.game"
+                ng-model-options="{ updateOn: 'blur' }" required />
+        </div>
+        <div>
+            Book [Debounce-200ms]: <input name="interest" type="text" ng-model="student.interest.book"
+                ng-model-options="{ debounce: 250 }" required />
+        </div>
+        <div>
+            Movie [Immediate]: <input name="interest" type="text" ng-model="student.interest.movie" required />
+        </div>
+        <div style="margin-top: 20px; margin-bottom: 20px">
+            <input type="button" ng-click="reset()" value="Reset" />
+            <input type="submit" ng-click="update(student)" value="Update" ng-disabled="myForm.nickname.$invalid"/>
+            <span ng-show="myForm.nickname.$invalid" style="color: red">//Disabling Submit button if nickname is empty</span>
+        </div>
+
+    </form>
+
+    <pre>{{$ctrl.student.name}} = {{student | json}}</pre>
+    <hr>
+    <pre>updatedStudent = {{updatedStudent | json}}</pre>
 </div>
 <hr>
 <a href="#!/students"><button>Back</button></a>
