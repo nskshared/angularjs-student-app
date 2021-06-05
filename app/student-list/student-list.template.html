@@ -1,13 +1,14 @@
-<div class="container-fluid">
+<form>
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
         <!--Sidebar content-->
-  
+
         <p>
           Search:
           <input placeholder="Enter studentId. Ex: s1234" ng-model="$ctrl.query" />
         </p>
-  
+
         <!-- <p>
           Sort by:
           <select ng-model="$ctrl.orderProp">
@@ -15,22 +16,26 @@
             <option value="age">Newest</option>
           </select>
         </p> -->
-  
+
       </div>
       <div class="col-md-10">
         <!--Body content-->
-  
-        <ul class="students">
-          <li ng-repeat="student in $ctrl.students | filter:$ctrl.query"
-              class="thumbnail student-list-item">
+
+        <div class="students">
+          <div ng-repeat="student in $ctrl.students track by $index" class="thumbnail student-list-item">
             <!-- <a href="#!/students/{{student.id}}" class="thumb">
               <img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}" />
             </a> -->
-            <a href="#!/students/{{student.studentId}}">{{student.name}}</a>
-          </li>
-        </ul>
-  
+            <md-checkbox ng-model="checkboxes[$index]">{{student.name}}</md-checkbox>
+            <!-- <input type="checkbox" ng-click="selectStudent(student)" ng-model="checkbox_status"> -->
+          </div>
+          <!-- selectedStudentId: {{selectedStudentId}}
+          checkbox_status: {{checkboxes[0]}}
+          checkbox_status: {{checkboxes[1]}}
+          checkbox_status: {{checkboxes[2]}} -->
+          <md-button ng-click="submitSelection()" ng-disabled="!anySelected()">Submit</md-button>
+        </div>
       </div>
     </div>
   </div>
-  
+</form>
